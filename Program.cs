@@ -77,26 +77,7 @@ while(options != 0)
         #endregion
         #region decryption
         case 2:
-            //decrypting
-            Console.WriteLine("What Cryptosystem are you using?");
-            Console.WriteLine("1. El Gamal");
-            Console.WriteLine("2. RSA");
-            Console.WriteLine("3. DiffieHellman");
-            switch (choice)
-            {
-                case 1:
-                    //stuff
-                    break;
-                case 2:
-                    //stuff
-                    break;
-                case 3:
-                    //stuff
-                    break;
-                default:
-                    Console.WriteLine($"{choice} is not an option");
-                    break;
-            }
+            
             break;
         #endregion
         #region interception
