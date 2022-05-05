@@ -9,6 +9,9 @@ class ElGamal : CryptoSystem
     #region constructors
 
     #endregion
+    #region properties
+
+    #endregion
     #region methods
     public override void PrintInfo()
     {

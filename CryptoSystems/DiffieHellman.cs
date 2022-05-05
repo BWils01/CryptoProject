@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using CryptoProject;
 namespace CryptoProject.CryptoSystems;
 
 class DiffieHellman : CryptoSystem
@@ -7,6 +8,9 @@ class DiffieHellman : CryptoSystem
 
     #endregion
     #region constructors
+    #endregion
+    #region properties
+
     #endregion
     #region methods
     public override void PrintInfo()

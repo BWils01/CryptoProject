@@ -16,6 +16,7 @@ while(options != 0)
     Console.WriteLine("1. Encrypt");
     Console.WriteLine("2. Decrypt");
     Console.WriteLine("3. Intercept");
+    Console.WriteLine("4. View Memory");
     options = Convert.ToInt32(Console.ReadLine());
     int choice = 0;
     switch (options)
@@ -97,6 +98,11 @@ while(options != 0)
             }
             break;
         #endregion
+        #region memory
+        case 4:
+                //stuff
+                break;
+        #endregion
         #region default
         default:
             Console.WriteLine("Invalid Input");
@@ -108,36 +114,15 @@ class Message
 {
     string _message;
     CryptoSystem _cryptoSystem;
-    Message(string message, CryptoSystem cryptoSystem)
+
+    public CryptoSystem cryptosystem
+    {
+        get { return _cryptoSystem; }
+        set { _cryptoSystem = value; }
+    }
+    public Message(string message, CryptoSystem cryptoSystem)
     {
         _message = message;
         _cryptoSystem = cryptoSystem;
-    }
-}
-class Methods
-{
-    public static BigInteger StringToAscii(string message)
-    {
-        BigInteger result = 1;
-
-        for(int i = 0; i < message.Length; i++)
-        {
-            int character = message[i];
-            result = result*1000 + character;
-        }
-        return result;
-    }
-
-    public static string AsciiToString(BigInteger message)
-    {
-        string result = "";
-
-        while(message != 1)
-        {
-            result = (char) (message % 1000) + result;
-            message = message / 1000;
-        }
-
-        return result;
     }
 }
