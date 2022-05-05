@@ -46,7 +46,11 @@ class ElGamal : CryptoSystem
     }
     public override string Decrypt(string message)
     {
-        throw new NotImplementedException();
+        var split = message.Split('C');
+        BigInteger c1 = BigInteger.Parse(split[0]);
+        BigInteger c2 = BigInteger.Parse(split[1]);
+
+        BigInteger inv = 
     }
     public override string Intercept(string message)
     {

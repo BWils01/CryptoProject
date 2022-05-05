@@ -4,11 +4,11 @@ using CryptoProjectMethods;
 using CryptoProjectMemory;
 using System.Numerics;
 
-BigInteger big = 34253451345314;
+BigInteger thing = 34253451345314;
 BigInteger bigger = BigInteger.Parse("1000000000000066600000000000001");
-big = BigInteger.ModPow(big, 69, 7331);
-BigInteger inverse = BigInteger.ModPow(big, 7331 - 2, 7331);
-Console.WriteLine(big*inverse%7331);
+thing = BigInteger.ModPow(thing, 69, 7331);
+BigInteger inverse = BigInteger.ModPow(thing, 7331 - 2, 7331);
+Console.WriteLine(thing*inverse%7331);
 Console.WriteLine(Methods.Order(6, 11));
 Console.WriteLine(Methods.isPrime(bigger));
 
