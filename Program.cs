@@ -205,13 +205,14 @@ while(options != 0)
                     //nothing
                     break;
                 case 1:
-                    //stuff
+                    memory.PrintSystems();
                     break;
                 case 2:
-                    //stuff
+                    memory.PrintMessages();
                     break;
                 case 3:
-                    //stuff
+                    memory.PrintSystems();
+                    memory.PrintMessages();
                     break;
                 default:
                     Console.WriteLine("Invalid input");
