@@ -5,7 +5,10 @@ namespace CryptoProject.CryptoSystems;
 class DiffieHellman : CryptoSystem
 {
     #region fields
-
+    BigInteger _recieverSecret;
+    BigInteger _senderSecret;
+    BigInteger _generator;
+    BigInteger _sharedKey;
     #endregion
     #region constructors
     #endregion
