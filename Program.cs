@@ -64,25 +64,70 @@ while(options != 0)
 
             //acquire data
             Console.WriteLine("Input memory location");
-            int location = Convert.ToInt32(Console.ReadLine());
+            int locationE = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please input message");
             string strMessage = Console.ReadLine();
 
             //encrypt data
-            BigInteger numMessage = memory.systemMemory[location].Encrypt(strMessage);
+            BigInteger numMessage = memory.systemMemory[locationE].Encrypt(strMessage);
 
             //store in memory
-            Message message = new Message(numMessage, memory.systemMemory[location].system);
+            Message message = new Message(numMessage, memory.systemMemory[locationE].system);
             memory.CreateMessage(message);
 
             //print info to user
             Console.WriteLine($"Your encrypted message is {numMessage}");
-            Console.WriteLine($"at location {location}");
+            Console.WriteLine($"at location {locationE}");
             break;
         #endregion
         #region decryption
         case 2:
-            
+            if (memory.systemMemory.Count == 0)
+            {
+                Console.WriteLine("There are no stored cyptosystems");
+                break;
+            }
+
+            Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
+            string yn = Console.ReadLine();
+
+            if (yn == "n")
+            {
+                memory.PrintSystems();
+                Console.WriteLine("Press Enter to continue");
+                Console.ReadLine();
+            }
+            Console.WriteLine("Input the memory location");
+            int locationDS = Convert.ToInt32((Console.ReadLine()));
+
+            Console.WriteLine("Is the message stored? y/n");
+            yn = Console.ReadLine();
+
+            //Decrypt a stored message
+            if(yn == "y")
+            {
+                Console.WriteLine("Do you know the memory location of the message? y/n");
+                yn = Console.ReadLine();
+                if (yn == "n")
+                {
+                    memory.PrintMessages();
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                }
+                Console.WriteLine("Input the memory location");
+                int locationDM = Convert.ToInt32((Console.ReadLine()));
+
+                string decrypted = memory.systemMemory[locationDS].Decrypt(memory.messageMemory[locationDM].message);
+                Console.WriteLine($"Decrypted message is {decrypted}");
+            }
+            else
+            {
+                Console.WriteLine("Input the encrypted message");
+                BigInteger messageD = BigInteger.Parse(Console.ReadLine());
+
+                string decrypted = memory.systemMemory[locationDS].Decrypt(messageD);
+                Console.WriteLine($"Decrypted message is {decrypted}");
+            }
             break;
         #endregion
         #region interception
