@@ -9,6 +9,8 @@ class DiffieHellman : CryptoSystem
     BigInteger _senderSecret; //the a exponent
     BigInteger _generator;
     BigInteger _sharedKey;
+    BigInteger _gA;
+    BigInteger _gB;
     #endregion
     #region constructors
     public DiffieHellman(BigInteger prime, BigInteger generator, BigInteger a, BigInteger b)
@@ -18,6 +20,20 @@ class DiffieHellman : CryptoSystem
         _recieverSecret = b;
         _senderSecret = a;
         _sharedKey = b*a % prime;
+        _gA = BigInteger.ModPow(generator, a, prime);
+        _gB = BigInteger.ModPow(generator, b, prime);
+        _system = "Diffie-Hellman";
+    }
+    public DiffieHellman(BigInteger prime, BigInteger generator, string gAgB)
+    {
+        _prime = prime;
+        _generator = generator;
+        _recieverSecret = 1;
+        _senderSecret = 1;
+        _sharedKey = 1;
+        var split = gAgB.Split('.');
+        _gA = BigInteger.Parse(split[0]);
+        _gB = BigInteger.Parse(split[1]);
         _system = "Diffie-Hellman";
     }
     #endregion
