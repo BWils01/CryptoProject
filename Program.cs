@@ -233,6 +233,7 @@ while(options != 0)
                     Console.WriteLine("1. El Gamal");
                     Console.WriteLine("2. RSA");
                     Console.WriteLine("3. Diffie-Hellman");
+                    choice = Convert.ToInt32(Console.ReadLine());
 
                     switch (choice)
                     {
