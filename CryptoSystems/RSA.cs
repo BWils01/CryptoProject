@@ -7,6 +7,7 @@ class RSA : CryptoSystem
     #region fields
     BigInteger _secondPrime;
     BigInteger _exponent;
+    BigInteger _phiN;
 
     #endregion
     #region constructors
@@ -15,6 +16,7 @@ class RSA : CryptoSystem
         _prime = prime;
         _secondPrime = secondPrime;
         _exponent = exponent;
+        _phiN = (prime - 1) * (secondPrime - 1);
         _system = "RSA";
     }
     #endregion
@@ -32,6 +34,7 @@ class RSA : CryptoSystem
         Console.WriteLine("Private:");
         Console.WriteLine($"Prime1: {_prime}");
         Console.WriteLine($"Prime2: {_secondPrime}");
+        Console.WriteLine($"Exponent^-1: {BigInteger.ModPow(_exponent, _phiN - 2, _phiN)}");
     }
     public override BigInteger Encrypt(string message)
     {
