@@ -285,31 +285,47 @@ while(options != 0)
                         #endregion
                         #region RSA
                         case 2:
-                            BigInteger p = 4;
-                            while(!Methods.isPrime(p))
+                            Console.WriteLine("Is this an intercepted cryptosystem? y/n");
+                            string ynRSA = Console.ReadLine();
+                            RSA rsa;
+                            if (ynRSA == "n")
                             {
-                                Console.WriteLine("Input a prime");
-                                p = BigInteger.Parse(Console.ReadLine());
-                            }
+                                BigInteger p = 4;
+                                while (!Methods.isPrime(p))
+                                {
+                                    Console.WriteLine("Input a prime");
+                                    p = BigInteger.Parse(Console.ReadLine());
+                                }
 
-                            BigInteger q = 4;
-                            while(!Methods.isPrime(q))
-                            {
-                                Console.WriteLine("Input a second prime");
-                                q = BigInteger.Parse(Console.ReadLine());
-                            }
-                            BigInteger n = p * q;
-                            Console.WriteLine($"n = {n}");
+                                BigInteger q = 4;
+                                while (!Methods.isPrime(q))
+                                {
+                                    Console.WriteLine("Input a second prime");
+                                    q = BigInteger.Parse(Console.ReadLine());
+                                }
+                                BigInteger phiN = (p-1) * (q-1);
+                                Console.WriteLine($"phi(N) = {phiN}");
 
-                            BigInteger e = 1;
-                            bool first = true;
-                            while(first || BigInteger.GreatestCommonDivisor(e, n) != 1)
+                                BigInteger e = 1;
+                                bool first = true;
+                                while (first || BigInteger.GreatestCommonDivisor(e, phiN) != 1)
+                                {
+                                    Console.WriteLine("Input an integer such that gcd(e, phi(n)) = 1");
+                                    e = BigInteger.Parse(Console.ReadLine());
+                                }
+
+                                rsa = new RSA(p, q, e);
+                            }
+                            else
                             {
+                                Console.WriteLine("Input N");
+                                BigInteger N = BigInteger.Parse(Console.ReadLine());
+
                                 Console.WriteLine("Input an integer such that gcd(e, phi(n)) = 1");
-                                e = BigInteger.Parse(Console.ReadLine());
-                            }
+                                BigInteger e = BigInteger.Parse(Console.ReadLine());
 
-                            RSA rsa = new RSA(p, q, e);
+                                rsa = new RSA(N, e);
+                            }
                             memory.CreateSystem(rsa);
                             choice = 1;
 
