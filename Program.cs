@@ -46,7 +46,6 @@ while(options != 0)
             Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
             string ynE = Console.ReadLine();
 
-            choice = Convert.ToInt32(Console.ReadLine());
             if(ynE == "n")
             {
                 memory.PrintSystems();
