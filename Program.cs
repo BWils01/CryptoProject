@@ -305,6 +305,7 @@ while(options != 0)
                                 {
                                     Console.WriteLine("Input an integer such that gcd(e, phi(n)) = 1");
                                     e = BigInteger.Parse(Console.ReadLine());
+                                    first = false;
                                 }
 
                                 rsa = new RSA(p, q, e);
