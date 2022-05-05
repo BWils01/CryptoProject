@@ -9,7 +9,10 @@ abstract class CryptoSystem
     public BigInteger prime
     {
         get { return _prime; }
-        set { _prime = value; }
+    }
+    public string system
+    {
+        get { return _system; }
     }
     public abstract void PrintInfo();
     public abstract BigInteger Encrypt(string message);

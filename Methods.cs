@@ -27,4 +27,24 @@ static class Methods
 
         return result;
     }
+
+    public static bool Order(BigInteger num, BigInteger prime)
+    {
+        List<BigInteger> generated = new List<BigInteger>();
+
+        for(int i = 1; i < prime - 1; i++)
+        {
+            BigInteger newNum = BigInteger.ModPow(num, i, prime);
+            if (generated.Contains(newNum))
+            {
+                return false;
+            }
+            else
+            {
+                generated.Add(newNum);
+            }
+        }
+
+        return true;
+    }
 }

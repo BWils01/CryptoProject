@@ -1,11 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CryptoProject.CryptoSystems;
+using CryptoProject;
 using System.Numerics;
 
 BigInteger big = 34253451345314;
 big = BigInteger.ModPow(big, 69, 7331);
 BigInteger inverse = BigInteger.ModPow(big, 7331 - 2, 7331);
 Console.WriteLine(big*inverse%7331);
+Console.WriteLine(Methods.Order(6, 11));
 
 int options = 4;
 while(options != 0)
