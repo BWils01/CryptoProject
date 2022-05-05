@@ -7,13 +7,15 @@ class ElGamal : CryptoSystem
     #region fields
     BigInteger _generator;
     BigInteger _privateKey;
+    BigInteger _gX;
     #endregion
     #region constructors
-    public ElGamal(BigInteger prime, BigInteger generator, BigInteger privateKey)
+    public ElGamal(BigInteger prime, BigInteger generator, BigInteger privateKey, BigInteger gX)
     {
         _generator = generator;
         _privateKey = privateKey;
         _prime = prime;
+        _gX = gX;
         _system = "El Gamal";
     }
     #endregion
@@ -28,7 +30,7 @@ class ElGamal : CryptoSystem
         Console.WriteLine("Public:");
         Console.WriteLine($"Generator: {_generator}");
         Console.WriteLine($"Prime: {_prime}");
-        Console.WriteLine($"g^x (mod p): {BigInteger.ModPow(_generator, _privateKey, _prime)}");
+        Console.WriteLine($"g^x (mod p): {_gX}");
         Console.WriteLine("Private:");
         Console.WriteLine($"Private Key: {_privateKey}");
     }
@@ -60,7 +62,16 @@ class ElGamal : CryptoSystem
     public override string Intercept(string message)
     {
         //brute force privateKey
+        int x = -1;
+        for(int i = 0; i < _prime; i++)
+        {
+            if (BigInteger.ModPow(_generator, i, _prime) == BigInteger.ModPow(_generator, _gX, _prime))
+            {
 
+            }
+        }
+
+        return "";
     }
     #endregion
 }
