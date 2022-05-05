@@ -36,7 +36,13 @@ class ElGamal : CryptoSystem
     {
         BigInteger result = Methods.StringToAscii(message);
 
+        Random random = new Random();
+        BigInteger tempKey = random.NextInt64()%_prime;
 
+        BigInteger c1 = BigInteger.ModPow(_generator, tempKey, _prime);
+        BigInteger c2 = result * BigInteger.ModPow(_generator, tempKey * _privateKey, _prime);
+
+        return c1.ToString() + "C" + c2.ToString();
     }
     public override string Decrypt(string message)
     {
