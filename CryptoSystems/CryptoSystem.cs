@@ -3,8 +3,8 @@ namespace CryptoProject.CryptoSystems;
 
 abstract class CryptoSystem
 {
-    BigInteger _prime;
-    string _system;
+    protected BigInteger _prime;
+    protected string _system;
 
     public BigInteger prime
     {
