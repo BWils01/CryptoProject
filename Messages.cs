@@ -5,11 +5,11 @@ using CryptoProject.CryptoSystems;
 class Message
 {
     #region fields
-    string _message;
+    BigInteger _message;
     string _type;
     #endregion
     #region properties
-    public string message
+    public BigInteger message
     {
         get { return _message; }
     }
@@ -19,7 +19,7 @@ class Message
     }
     #endregion
     #region constructors
-    public Message(string message, string type)
+    public Message(BigInteger message, string type)
     {
         _message = message;
         _type = type;

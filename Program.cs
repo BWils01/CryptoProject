@@ -62,7 +62,11 @@ while(options != 0)
 
             Console.WriteLine("Please input message");
             string input = Console.ReadLine();
-            Message message = new Message(input, memory.systemMemory[location].system);
+            
+            BigInteger numMessage = Methods.StringToAscii(input);
+            numMessage = 
+
+            Message message = new Message(20, memory.systemMemory[location].system);
             memory.CreateMessage(message);
             break;
         #endregion
