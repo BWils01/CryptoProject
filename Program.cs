@@ -46,6 +46,11 @@ while(options != 0)
         #endregion
         #region encryption
         case 1:
+            if(memory.systemMemory.Count == 0)
+            {
+                Console.WriteLine("There are no stored cyptosystems");
+                break;
+            }
             Console.WriteLine("Do you know the memory location of the cryptosystem?");
             Console.WriteLine("1. Yes");
             Console.WriteLine("2. No");
