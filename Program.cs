@@ -333,33 +333,57 @@ while(options != 0)
                         #endregion
                         #region Diffie-Hellman
                         case 3:
-                            BigInteger primeDH = 4;
-                            while (!Methods.isPrime(primeDH))
+                            Console.WriteLine("Is this an intercepted cryptosystem? y/n");
+                            string ynDH = Console.ReadLine();
+                            DiffieHellman diffieHellman;
+                            if (ynDH == "n")
                             {
-                                Console.WriteLine("Input a prime");
-                                primeDH = BigInteger.Parse(Console.ReadLine());
+                                BigInteger primeDH = 4;
+                                while (!Methods.isPrime(primeDH))
+                                {
+                                    Console.WriteLine("Input a prime");
+                                    primeDH = BigInteger.Parse(Console.ReadLine());
+                                }
+
+                                BigInteger generatorDH = 0;
+                                while (generatorDH == 0 || !Methods.Order(generatorDH, primeDH))
+                                {
+                                    Console.WriteLine("Input a generator");
+                                    generatorDH = BigInteger.Parse(Console.ReadLine());
+                                }
+
+                                Console.WriteLine("Pick a private key");
+                                BigInteger keyA = BigInteger.Parse(Console.ReadLine());
+                                System.Random random = new System.Random();
+                                BigInteger keyB = random.NextInt64() % primeDH;
+
+                                diffieHellman = new DiffieHellman(primeDH, generatorDH, keyA, keyB);
+
+                                Console.WriteLine($"You sent {BigInteger.ModPow(generatorDH, keyA, primeDH)}");
+                                Console.WriteLine($"They sent {BigInteger.ModPow(generatorDH, keyB, primeDH)}");
+                                Console.WriteLine($"So your shared key is {BigInteger.ModPow(generatorDH, keyA * keyB, primeDH)}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("What is the generator?");
+                                BigInteger genratorDHI = BigInteger.Parse(Console.ReadLine());
+
+                                Console.WriteLine("What is the prime");
+                                BigInteger primeDHI = BigInteger.Parse(Console.ReadLine());
+
+                                Console.WriteLine("What is the g^a?");
+                                BigInteger gADH = BigInteger.Parse(Console.ReadLine());
+
+                                Console.WriteLine("What is the g^b");
+                                BigInteger gBDH = BigInteger.Parse(Console.ReadLine());
+
+                                string gAgB = gADH.ToString() + "." + gBDH;
+
+                                diffieHellman = new DiffieHellman(genratorDHI, primeDHI, gAgB);
                             }
 
-                            BigInteger generatorDH = 0;
-                            while (generatorDH == 0 || !Methods.Order(generatorDH, primeDH))
-                            {
-                                Console.WriteLine("Input a generator");
-                                generatorDH = BigInteger.Parse(Console.ReadLine());
-                            }
-
-                            Console.WriteLine("Pick a private key");
-                            BigInteger keyA = BigInteger.Parse(Console.ReadLine());
-                            System.Random random = new System.Random();
-                            BigInteger keyB = random.NextInt64()%primeDH;
-
-                            DiffieHellman diffieHellman = new DiffieHellman(primeDH, generatorDH, keyA, keyB);
                             memory.CreateSystem(diffieHellman);
-
-                            Console.WriteLine($"You sent {BigInteger.ModPow(generatorDH, keyA, primeDH)}");
-                            Console.WriteLine($"They sent {BigInteger.ModPow(generatorDH, keyB, primeDH)}");
-                            Console.WriteLine($"So your shared key is {BigInteger.ModPow(generatorDH, keyA * keyB, primeDH)}");
                             choice = 1;
-
                             break;
                         #endregion
                         #region default
