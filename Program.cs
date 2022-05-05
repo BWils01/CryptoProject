@@ -299,7 +299,32 @@ while(options != 0)
                         #endregion
                         #region Diffie-Hellman
                         case 3:
-                            //stuff
+                            BigInteger primeDH = 4;
+                            while (!Methods.isPrime(primeDH))
+                            {
+                                Console.WriteLine("Input a prime");
+                                primeDH = BigInteger.Parse(Console.ReadLine());
+                            }
+
+                            BigInteger generatorDH = 0;
+                            while (generatorDH == 0 || !Methods.Order(generatorDH, primeDH))
+                            {
+                                Console.WriteLine("Input a generator");
+                                generatorDH = BigInteger.Parse(Console.ReadLine());
+                            }
+
+                            Console.WriteLine("Pick a private key");
+                            BigInteger keyA = BigInteger.Parse(Console.ReadLine());
+                            System.Random random = new System.Random();
+                            BigInteger keyB = random.NextInt64();
+
+                            DiffieHellman diffieHellman = new DiffieHellman(primeDH, generatorDH, keyA, keyB);
+                            memory.CreateSystem(diffieHellman);
+
+                            Console.WriteLine($"You sent {BigInteger.ModPow(generatorDH, keyA, primeDH)}");
+                            Console.WriteLine($"They sent {BigInteger.ModPow(generatorDH, keyB, primeDH)}");
+                            Console.WriteLine($"So your shared key is {BigInteger.ModPow(generatorDH, keyA * keyB, primeDH)}");
+
                             break;
                         #endregion
                         #region default
