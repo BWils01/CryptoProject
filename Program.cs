@@ -46,8 +46,24 @@ while(options != 0)
         #endregion
         #region encryption
         case 1:
-            //encrypting
-            
+            Console.WriteLine("Do you know the memory location of the cryptosystem?");
+            Console.WriteLine("1. Yes");
+            Console.WriteLine("2. No");
+            choice = Convert.ToInt32(Console.ReadLine());
+            if(choice == 2)
+            {
+                memory.PrintSystems();
+                Console.WriteLine("Press Enter to continue");
+                Console.ReadLine();
+            }
+
+            Console.WriteLine("Input memory location");
+            int location = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Please input message");
+            string input = Console.ReadLine();
+            Message message = new Message(input, memory.systemMemory[location].system);
+            memory.CreateMessage(message);
             break;
         #endregion
         #region decryption
