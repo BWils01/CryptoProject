@@ -24,6 +24,17 @@ class Memory
 
     #endregion
     #region methods
-
+    public void PrintSystems()
+    {
+        for(int i = 0; i < _systemMemory.Count; i++)
+        {
+            Console.WriteLine($"Memory Location {i}");
+            _systemMemory[i].PrintInfo();
+        }
+    }
+    public void PrintMessages()
+    {
+        //stuff
+    }
     #endregion
 }
