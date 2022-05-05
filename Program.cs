@@ -228,7 +228,7 @@ while(options != 0)
             Console.WriteLine("1. Create a cryptosystem");
             Console.WriteLine("2. Delete a cryptosystem");
             Console.WriteLine("3. Delete a message");
-            choice = Console.ReadLine();
+            choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
             {
@@ -236,7 +236,47 @@ while(options != 0)
                     //nothing
                     break;
                 case 1:
-                    //stuff
+                    Console.WriteLine("Which cryptosystem are you using?");
+                    Console.WriteLine("1. El Gamal");
+                    Console.WriteLine("2. RSA");
+                    Console.WriteLine("3. Diffie-Hellman");
+
+                    switch (choice)
+                    {
+                        case 1:
+                            BigInteger prime = 4;
+                            while(!Methods.isPrime(prime) && Methods.AsciiToString(prime).Count() < 4)
+                            {
+                                Console.WriteLine("Input a prime");
+                                prime = Convert.ToInt32(Console.ReadLine());
+                            }
+
+                            BigInteger generator = 0;
+                            while(generator == 0 || !Methods.Order(generator, prime))
+                            {
+                                Console.WriteLine("Input a primitive root (generator)");
+                                generator = Convert.ToInt32(Console.ReadLine());
+                            }
+
+                            Console.WriteLine("Input a private key (1 <= x <= p - 2)");
+                            BigInteger privateKey = Convert.ToInt32(Console.ReadLine());
+
+                            ElGamal elgamal = new ElGamal(prime, generator, privateKey);
+
+                            break;
+                        case 2:
+                            //stuff
+                            break;
+                        case 3:
+                            //stuff
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input");
+                            break;
+                    }
+
+                    choice = 1;
+                    break;
                 case 2:
                     //stuff
                     break;
