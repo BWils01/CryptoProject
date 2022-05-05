@@ -47,6 +47,59 @@ static class Methods
 
         return true;
     }
+
+    #region Inverse Mod
+    public static (BigInteger LeftFactor, BigInteger RightFactor, BigInteger Gcd)
+                    Egcd(this BigInteger left, BigInteger right)
+    {
+        BigInteger leftFactor = 0;
+        BigInteger rightFactor = 1;
+
+        BigInteger u = 1;
+        BigInteger v = 0;
+        BigInteger gcd = 0;
+
+        while (left != 0)
+        {
+            BigInteger q = right / left;
+            BigInteger r = right % left;
+
+            BigInteger m = leftFactor - u * q;
+            BigInteger n = rightFactor - v * q;
+
+            right = left;
+            left = r;
+            leftFactor = u;
+            rightFactor = v;
+            u = m;
+            v = n;
+
+            gcd = right;
+        }
+
+        return (LeftFactor: leftFactor,
+                RightFactor: rightFactor,
+                Gcd: gcd);
+    }
+    public static BigInteger ModInversion(this BigInteger value, BigInteger modulo)
+    {
+        var egcd = Egcd(value, modulo);
+
+        if (egcd.Gcd != 1)
+            throw new ArgumentException("Invalid modulo", nameof(modulo));
+
+        BigInteger result = egcd.LeftFactor;
+
+        if (result < 0)
+            result += modulo;
+
+        return result % modulo;
+    }
+
+    public static BigInteger ModDivision(
+      this BigInteger left, BigInteger right, BigInteger modulo) =>
+           (left * ModInversion(right, modulo)) % modulo;
+    #endregion
     #region Miller Rabin test
     private static ThreadLocal<Random> s_Gen = new ThreadLocal<Random>(
       () => 
