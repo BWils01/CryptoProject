@@ -62,8 +62,22 @@ class RSA : CryptoSystem
     }
     public override string Intercept(string message)
     {
-        //fermat factorization
+        //brute force N (this is horrible and slow)
+        for(int i = 1; i < _N; i++)
+        {
+            for(int j = 1; j < _N; j++)
+            {
+                if(i * j == _N)
+                {
+                    _prime = i;
+                    _secondPrime = j;
+                }
+            }
+        }
+        _phiN = (_prime - 1) * (_secondPrime - 1);
 
+        string resultM = Decrypt(message);
+        return resultM;
     }
     #endregion
 }
