@@ -264,6 +264,7 @@ while(options != 0)
 
                             ElGamal elgamal = new ElGamal(prime, generator, privateKey);
                             memory.CreateSystem(elgamal);
+                            choice = 1;
 
                             break;
                         #endregion
@@ -295,6 +296,7 @@ while(options != 0)
 
                             RSA rsa = new RSA(p, q, e);
                             memory.CreateSystem(rsa);
+                            choice = 1;
 
                             break;
                         #endregion
@@ -325,12 +327,14 @@ while(options != 0)
                             Console.WriteLine($"You sent {BigInteger.ModPow(generatorDH, keyA, primeDH)}");
                             Console.WriteLine($"They sent {BigInteger.ModPow(generatorDH, keyB, primeDH)}");
                             Console.WriteLine($"So your shared key is {BigInteger.ModPow(generatorDH, keyA * keyB, primeDH)}");
+                            choice = 1;
 
                             break;
                         #endregion
                         #region default
                         default:
                             Console.WriteLine("Invalid input");
+                            choice = 1;
                             break;
                         #endregion
                     }
@@ -339,6 +343,7 @@ while(options != 0)
                     break;
                 case 2:
                     Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
+                    string 
                     break;
                 case 3:
                     //stuff
