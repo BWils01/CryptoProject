@@ -5,6 +5,7 @@ namespace CryptoProject.CryptoSystems;
 class RSA : CryptoSystem
 {
     #region fields
+    BigInteger _secondPrime;
 
     #endregion
     #region constructors
