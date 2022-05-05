@@ -62,16 +62,21 @@ class ElGamal : CryptoSystem
     public override string Intercept(string message)
     {
         //brute force privateKey
-        int x = -1;
-        for(int i = 0; i < _prime; i++)
+        BigInteger privateKey = -1;
+        for(BigInteger i = 0; i < _prime; i++)
         {
             if (BigInteger.ModPow(_generator, i, _prime) == BigInteger.ModPow(_generator, _gX, _prime))
             {
-
+                privateKey = i;
+                break;
             }
         }
+        Console.WriteLine($"private key is {privateKey}");
+        _privateKey = privateKey;
 
-        return "";
+        string result = Decrypt(message);
+
+        return result;
     }
     #endregion
 }
