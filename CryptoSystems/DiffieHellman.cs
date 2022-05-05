@@ -12,6 +12,9 @@ class DiffieHellman : CryptoSystem
     BigInteger _gA;
     BigInteger _gB;
     #endregion
+    #region properties
+
+    #endregion
     #region constructors
     public DiffieHellman(BigInteger prime, BigInteger generator, BigInteger a, BigInteger b)
     {
@@ -36,9 +39,6 @@ class DiffieHellman : CryptoSystem
         _gB = BigInteger.Parse(split[1]);
         _system = "Diffie-Hellman";
     }
-    #endregion
-    #region properties
-
     #endregion
     #region methods
     public override void PrintInfo()
