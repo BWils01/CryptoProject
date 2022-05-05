@@ -26,10 +26,12 @@ class RSA : CryptoSystem
     {
         Console.WriteLine("RSA Encryption System Info");
         Console.WriteLine();
+        Console.WriteLine("Public");
         Console.WriteLine($"Exponent: {_exponent}");
-        Console.WriteLine($"Prime 1: {_prime}");
-        Console.WriteLine($"Prime 2: {_secondPrime}");
         Console.WriteLine($"N = Prime1 * Prime2: {_prime * _secondPrime}");
+        Console.WriteLine("Private:");
+        Console.WriteLine($"Prime1: {_prime}");
+        Console.WriteLine($"Prime2: {_secondPrime}");
     }
     public override BigInteger Encrypt(string message)
     {
