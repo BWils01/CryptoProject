@@ -51,13 +51,14 @@ while(options != 0)
                 Console.WriteLine("There are no stored cyptosystems");
                 break;
             }
-            Console.WriteLine("Do you know the memory location of the cryptosystem?");
-            Console.WriteLine("1. Yes");
-            Console.WriteLine("2. No");
+            Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
+            string ynE = Console.ReadLine();
+
             choice = Convert.ToInt32(Console.ReadLine());
-            if(choice == 2)
+            if(ynE == "n")
             {
                 memory.PrintSystems();
+                Console.WriteLine();
                 Console.WriteLine("Press Enter to continue");
                 Console.ReadLine();
             }
@@ -89,11 +90,12 @@ while(options != 0)
             }
 
             Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
-            string yn = Console.ReadLine();
+            string ynD = Console.ReadLine();
 
-            if (yn == "n")
+            if (ynD == "n")
             {
                 memory.PrintSystems();
+                Console.WriteLine();
                 Console.WriteLine("Press Enter to continue");
                 Console.ReadLine();
             }
@@ -101,16 +103,17 @@ while(options != 0)
             int locationDS = Convert.ToInt32((Console.ReadLine()));
 
             Console.WriteLine("Is the message stored? y/n");
-            yn = Console.ReadLine();
+            ynD = Console.ReadLine();
 
             //Decrypt a stored message
-            if(yn == "y")
+            if(ynD == "y")
             {
                 Console.WriteLine("Do you know the memory location of the message? y/n");
-                yn = Console.ReadLine();
-                if (yn == "n")
+                ynD = Console.ReadLine();
+                if (ynD == "n")
                 {
                     memory.PrintMessages();
+                    Console.WriteLine();
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                 }
@@ -133,25 +136,59 @@ while(options != 0)
         #region interception
         case 3:
             //decyphering a message as if you don't know what it is
-            Console.WriteLine("What Cryptosystem are you using?");
-            Console.WriteLine("1. El Gamal");
-            Console.WriteLine("2. RSA");
-            Console.WriteLine("3. DiffieHellman");
-            switch (choice)
+            Console.WriteLine("A cryptosystem is necessary to have been created");
+            Console.WriteLine("You can put in only the known information and choose random info for the rest");
+            if (memory.systemMemory.Count == 0)
             {
-                case 1:
-                    //stuff
-                    break;
-                case 2:
-                    //stuff
-                    break;
-                case 3:
-                    //stuff
-                    break;
-                default:
-                    Console.WriteLine($"{choice} is not an option");
-                    break;
+                Console.WriteLine("There are no stored cyptosystems");
+                break;
             }
+            Console.WriteLine("Do you wish to exit? y/n");
+            string ynI = Console.ReadLine();
+            if (ynI == "y") break;
+
+            Console.WriteLine("Do you know the memory location of the system? y/n");
+
+            if (ynI == "n")
+            {
+                memory.PrintSystems();
+                Console.WriteLine();
+                Console.WriteLine("Press Enter to continue");
+                Console.ReadLine();
+            }
+
+            Console.WriteLine("Input the memory location of the system");
+            int locationIS = Convert.ToInt32((Console.ReadLine()));
+
+            Console.WriteLine("Is the message in the memory? y/n");
+            ynI = Console.ReadLine();
+            BigInteger intercept;
+            
+            if(ynI == "n")
+            {
+                intercept = BigInteger.Parse(Console.ReadLine());
+            }
+            else
+            {
+                Console.WriteLine("Do you know the memory location of the message? y/n");
+                ynI = Console.ReadLine();
+
+                if(ynI == "n")
+                {
+                    memory.PrintMessages();
+                    Console.WriteLine();
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                }
+
+                Console.WriteLine("What is the location of the message");
+                int locationIM = Convert.ToInt32((Console.ReadLine()));
+                intercept = memory.messageMemory[locationIM].message;
+            }
+
+            string translation = memory.systemMemory[locationIS].Intercept(intercept);
+            Console.WriteLine($"The message is {translation}");
+
             break;
         #endregion
         #region memory
