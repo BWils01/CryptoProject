@@ -4,14 +4,6 @@ using CryptoProjectMethods;
 using CryptoProjectMemory;
 using System.Numerics;
 
-BigInteger thing = 34253451345314;
-BigInteger bigger = BigInteger.Parse("1000000000000066600000000000001");
-thing = BigInteger.ModPow(thing, 69, 7331);
-BigInteger inverse = BigInteger.ModPow(thing, 7331 - 2, 7331);
-Console.WriteLine(thing*inverse%7331);
-Console.WriteLine(Methods.Order(6, 11));
-Console.WriteLine(Methods.isPrime(bigger));
-
 int options = 4;
 Memory memory = new Memory();
 Console.WriteLine("This program can encrypt, decrypt, and intercept messages as well as create cryptosystems to be stored in memory");
