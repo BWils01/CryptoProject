@@ -11,9 +11,14 @@ class DiffieHellman : CryptoSystem
     BigInteger _sharedKey;
     #endregion
     #region constructors
-    public DiffieHellman()
+    public DiffieHellman(BigInteger prime, BigInteger generator, BigInteger a, BigInteger b)
     {
-
+        _prime = prime;
+        _generator = generator;
+        _recieverSecret = b;
+        _senderSecret = a;
+        _sharedKey = b*a % prime;
+        _system = "Diffie-Hellman";
     }
     #endregion
     #region properties
