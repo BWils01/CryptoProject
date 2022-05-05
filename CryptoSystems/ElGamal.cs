@@ -50,11 +50,17 @@ class ElGamal : CryptoSystem
         BigInteger c1 = BigInteger.Parse(split[0]);
         BigInteger c2 = BigInteger.Parse(split[1]);
 
-        BigInteger inv = 
+        BigInteger inv = Methods.ModInversion(_privateKey, _prime);
+
+        BigInteger resultI = c2 * (BigInteger.ModPow(inv, _privateKey, _prime)) % _prime;
+        string resultS = Methods.AsciiToString(resultI);
+
+        return resultS;
     }
     public override string Intercept(string message)
     {
-        throw new NotImplementedException();
+        //brute force privateKey
+
     }
     #endregion
 }
