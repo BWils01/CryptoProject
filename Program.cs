@@ -13,6 +13,7 @@ Console.WriteLine(Methods.Order(6, 11));
 Console.WriteLine(Methods.isPrime(bigger));
 
 int options = 4;
+Memory memory = new Memory();
 Console.WriteLine("This program can encrypt, decrypt, and intercept messages as well as create cryptosystems to be stored in memory");
 Console.WriteLine("What this means:");
 Console.WriteLine("Encrypt: encrypt a new message with an established cryptosystem (this creates a stored message)");
