@@ -4,16 +4,28 @@ using CryptoProject.CryptoSystems;
 
 class Message
 {
+    #region fields
     string _message;
-    CryptoSystem _cryptoSystem;
-
-    public CryptoSystem cryptosystem
+    string _type;
+    #endregion
+    #region properties
+    public string message
     {
-        get { return _cryptoSystem; }
+        get { return _message; }
     }
-    public Message(string message, CryptoSystem cryptoSystem)
+    public string type
+    {
+        get { return _type; }
+    }
+    #endregion
+    #region constructors
+    public Message(string message, string type)
     {
         _message = message;
-        _cryptoSystem = cryptoSystem;
+        _type = type;
     }
+    #endregion
+    #region methods
+
+    #endregion
 }

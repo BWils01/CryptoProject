@@ -34,7 +34,12 @@ class Memory
     }
     public void PrintMessages()
     {
-        //stuff
+        for(int i = 0; i < _messageMemory.Count; i++)
+        {
+            Console.WriteLine($"Memory Location {i}");
+            Console.WriteLine($"{_messageMemory[i].type} CryptoSystem");
+            Console.WriteLine($"message: {_messageMemory[i].message}");
+        }
     }
     #endregion
 }
