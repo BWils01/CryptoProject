@@ -8,6 +8,7 @@ class RSA : CryptoSystem
     BigInteger _secondPrime;
     BigInteger _exponent;
     BigInteger _phiN;
+    BigInteger _N;
 
     #endregion
     #region constructors
@@ -17,6 +18,16 @@ class RSA : CryptoSystem
         _secondPrime = secondPrime;
         _exponent = exponent;
         _phiN = (prime - 1) * (secondPrime - 1);
+        _N = prime * secondPrime;
+        _system = "RSA";
+    }
+    public RSA(BigInteger N, BigInteger exponent)
+    {
+        _prime = 0;
+        _secondPrime = 0;
+        _exponent = exponent;
+        _phiN = (_prime - 1) * (_secondPrime - 1);
+        _N = N;
         _system = "RSA";
     }
     #endregion
@@ -44,11 +55,15 @@ class RSA : CryptoSystem
     }
     public override string Decrypt(string message)
     {
-        throw new NotImplementedException();
+        BigInteger messageI = Methods.StringToAscii(message);
+        BigInteger inv = Methods.ModInversion(_exponent, _phiN);
+        string resultM = Methods.AsciiToString(BigInteger.ModPow(messageI, inv, _prime * _secondPrime));
+        return resultM;
     }
     public override string Intercept(string message)
     {
-        throw new NotImplementedException();
+        //fermat factorization
+
     }
     #endregion
 }
