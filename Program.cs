@@ -119,7 +119,6 @@ class Message
     public CryptoSystem cryptosystem
     {
         get { return _cryptoSystem; }
-        set { _cryptoSystem = value; }
     }
     public Message(string message, CryptoSystem cryptoSystem)
     {

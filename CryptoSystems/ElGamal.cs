@@ -22,7 +22,11 @@ class ElGamal : CryptoSystem
     #region methods
     public override void PrintInfo()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("El Gamal Encryption System Info");
+        Console.WriteLine();
+        Console.WriteLine($"Generator: {_generator}");
+        Console.WriteLine($"Prime: {_prime}");
+        Console.WriteLine($"Private Key: {_privateKey}");
     }
     public override BigInteger Encrypt(string message)
     {
