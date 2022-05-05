@@ -49,8 +49,8 @@ class ElGamal : CryptoSystem
     public override string Decrypt(string message)
     {
         var split = message.Split('C');
-        BigInteger c1 = BigInteger.Parse(split[0]);
-        BigInteger c2 = BigInteger.Parse(split[1]);
+        BigInteger c1 = Methods.StringToAscii(split[0]);
+        BigInteger c2 = Methods.StringToAscii(split[1]);
 
         BigInteger inv = Methods.ModInversion(_privateKey, _prime);
 
