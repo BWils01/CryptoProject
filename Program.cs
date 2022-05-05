@@ -343,10 +343,43 @@ while(options != 0)
                     break;
                 case 2:
                     Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
-                    string 
+                    string ynDelS = Console.ReadLine();
+
+                    if(ynDelS == "n")
+                    {
+                        memory.PrintSystems();
+                        Console.WriteLine();
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                    }
+
+                    Console.WriteLine("Input the memory location of the system");
+                    int locationDelS = Convert.ToInt32(Console.ReadLine());
+
+                    memory.DeleteSystem(locationDelS);
+
+                    Console.WriteLine("System deleted make sure to recheck any memory postions as they may have moved when the list shrank");
+
                     break;
                 case 3:
-                    //stuff
+                    Console.WriteLine("Do you know the memory location of the message? y/n");
+                    string ynDelM = Console.ReadLine();
+
+                    if (ynDelM== "n")
+                    {
+                        memory.PrintSystems();
+                        Console.WriteLine();
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                    }
+
+                    Console.WriteLine("Input the memory location of the message");
+                    int locationDelM= Convert.ToInt32(Console.ReadLine());
+
+                    memory.DeleteSystem(locationDelM);
+
+                    Console.WriteLine("Message deleted make sure to recheck any memory postions as they may have moved when the list shrank");
+
                     break;
                 default:
                     Console.WriteLine("Invalid input");
