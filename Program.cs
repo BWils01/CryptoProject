@@ -249,18 +249,18 @@ while(options != 0)
                             while(!Methods.isPrime(prime) && Methods.AsciiToString(prime).Count() < 4)
                             {
                                 Console.WriteLine("Input a prime");
-                                prime = Convert.ToInt32(Console.ReadLine());
+                                prime = BigInteger.Parse(Console.ReadLine());
                             }
 
                             BigInteger generator = 0;
                             while(generator == 0 || !Methods.Order(generator, prime))
                             {
                                 Console.WriteLine("Input a primitive root (generator)");
-                                generator = Convert.ToInt32(Console.ReadLine());
+                                generator = BigInteger.Parse(Console.ReadLine());
                             }
 
                             Console.WriteLine("Input a private key (1 <= x <= p - 2)");
-                            BigInteger privateKey = Convert.ToInt32(Console.ReadLine());
+                            BigInteger privateKey = BigInteger.Parse(Console.ReadLine());
 
                             ElGamal elgamal = new ElGamal(prime, generator, privateKey);
                             memory.CreateSystem(elgamal);
@@ -273,14 +273,14 @@ while(options != 0)
                             while(!Methods.isPrime(p))
                             {
                                 Console.WriteLine("Input a prime");
-                                p = Convert.ToInt32(Console.ReadLine());
+                                p = BigInteger.Parse(Console.ReadLine());
                             }
 
                             BigInteger q = 4;
                             while(!Methods.isPrime(q))
                             {
                                 Console.WriteLine("Input a second prime");
-                                q = Convert.ToInt32(Console.ReadLine());
+                                q = BigInteger.Parse(Console.ReadLine());
                             }
                             BigInteger n = p * q;
                             Console.WriteLine($"n = {n}");
@@ -290,6 +290,7 @@ while(options != 0)
                             while(first || BigInteger.GreatestCommonDivisor(e, n) != 1)
                             {
                                 Console.WriteLine("Input an integer such that gcd(e, phi(n)) = 1");
+                                e = BigInteger.Parse(Console.ReadLine());
                             }
 
                             RSA rsa = new RSA(p, q, e);
@@ -337,7 +338,7 @@ while(options != 0)
                     choice = 1;
                     break;
                 case 2:
-                    //stuff
+                    Console.WriteLine("Do you know the memory location of the cryptosystem? y/n");
                     break;
                 case 3:
                     //stuff
