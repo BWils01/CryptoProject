@@ -54,7 +54,7 @@ class ElGamal : CryptoSystem
 
         BigInteger inv = Methods.ModInversion(_privateKey, _prime);
 
-        BigInteger resultI = c2 * (BigInteger.ModPow(inv, _privateKey, _prime)) % _prime;
+        BigInteger resultI = c2 * (Methods.ModInversion(BigInteger.ModPow(c1, _privateKey, _prime), _prime)) % _prime;
         string resultS = Methods.AsciiToString(resultI);
 
         return resultS;
