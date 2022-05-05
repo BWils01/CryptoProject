@@ -41,7 +41,7 @@ while(options != 0)
     {
         #region exit
         case 0:
-            //nothing
+            Console.WriteLine("Good Bye");
             break;
         #endregion
         #region encryption
