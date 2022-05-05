@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using CryptoProject.CryptoSystems;
 using System.Numerics;
 
 BigInteger big = 34253451345314;
@@ -103,76 +104,6 @@ while(options != 0)
         #endregion
     }
 }
-#region CryptoSystems
-abstract class CryptoSystem
-{
-    BigInteger _prime;
-    string _system;
-
-    public abstract void PrintInfo();
-    public abstract BigInteger Encrypt(string message);
-}
-
-class ElGamal : CryptoSystem
-{
-    #region fields
-
-    #endregion
-    #region constructors
-
-    #endregion
-    #region methods
-    public override void PrintInfo()
-    {
-        throw new NotImplementedException();
-    }
-    public override BigInteger Encrypt(string message)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-}
-
-class RSA : CryptoSystem
-{
-    #region fields
-
-    #endregion
-    #region constructors
-
-    #endregion
-    #region methods
-    public override void PrintInfo()
-    {
-        throw new NotImplementedException();
-    }
-    public override BigInteger Encrypt(string message)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-}
-
-class DiffieHellman : CryptoSystem
-{
-    #region fields
-
-    #endregion
-    #region constructors
-
-    #endregion
-    #region methods
-    public override void PrintInfo()
-    {
-        throw new NotImplementedException();
-    }
-    public override BigInteger Encrypt(string message)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-}
-#endregion
 class Message
 {
     string _message;
