@@ -34,7 +34,7 @@ class RSA : CryptoSystem
         Console.WriteLine("Private:");
         Console.WriteLine($"Prime1: {_prime}");
         Console.WriteLine($"Prime2: {_secondPrime}");
-        Console.WriteLine($"Exponent^-1: {BigInteger.ModPow(_exponent, _phiN - 2, _phiN)}");
+        Console.WriteLine($"Exponent^-1: {Methods.ModInversion(_exponent, _phiN)}");
     }
     public override BigInteger Encrypt(string message)
     {
