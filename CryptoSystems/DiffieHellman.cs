@@ -44,7 +44,10 @@ class DiffieHellman : CryptoSystem
     }
     public override string Decrypt(string message)
     {
-
+        BigInteger inv = Methods.ModInversion(_sharedKey, _prime);
+        BigInteger messageI = Methods.StringToAscii(message);
+        string resultMS = Methods.AsciiToString(BigInteger.ModPow(messageI, inv, _prime));
+        return resultMS;
     }
     public override string Intercept(string message)
     {
