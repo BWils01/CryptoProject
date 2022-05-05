@@ -18,7 +18,7 @@ Console.WriteLine("Encrypt: encrypt a new message with an established cryptosyst
 Console.WriteLine("Decrypt: decrypt a created message with an established cryptosystem");
 Console.WriteLine("Intercept: decrypt an already encrypted message that does not have an established cryptosystem as if you intercepted someone else's communication");
 Console.WriteLine("View Memory: view created cryptosytems or messages");
-Console.WriteLine("Create: create a cryptosystem");
+Console.WriteLine("Create/Delete: create or delete a cryptosystem");
 Console.WriteLine("Press Enter to continue");
 Console.ReadLine();
 Console.WriteLine();
@@ -32,7 +32,7 @@ while(options != 0)
     Console.WriteLine("2. Decrypt");
     Console.WriteLine("3. Intercept");
     Console.WriteLine("4. View Memory");
-    Console.WriteLine("5. Create");
+    Console.WriteLine("5. Create/Delete");
     options = Convert.ToInt32(Console.ReadLine());
     int choice = 0;
     switch (options)
