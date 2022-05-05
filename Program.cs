@@ -319,7 +319,7 @@ while(options != 0)
                             Console.WriteLine("Pick a private key");
                             BigInteger keyA = BigInteger.Parse(Console.ReadLine());
                             System.Random random = new System.Random();
-                            BigInteger keyB = random.NextInt64();
+                            BigInteger keyB = random.NextInt64()%primeDH;
 
                             DiffieHellman diffieHellman = new DiffieHellman(primeDH, generatorDH, keyA, keyB);
                             memory.CreateSystem(diffieHellman);
