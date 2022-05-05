@@ -262,6 +262,7 @@ while(options != 0)
                             BigInteger privateKey = Convert.ToInt32(Console.ReadLine());
 
                             ElGamal elgamal = new ElGamal(prime, generator, privateKey);
+                            memory.CreateSystem(elgamal);
 
                             break;
                         case 2:
