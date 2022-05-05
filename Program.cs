@@ -193,8 +193,32 @@ while(options != 0)
         #endregion
         #region memory
         case 4:
-                //stuff
-                break;
+            Console.WriteLine("Which memory would you like to view?");
+            Console.WriteLine("0. exit");
+            Console.WriteLine("1. Stored cryptosystems");
+            Console.WriteLine("2. Stored encrypted messages");
+            Console.WriteLine("3. Both");
+
+            switch (choice)
+            {
+                case 0:
+                    //nothing
+                    break;
+                case 1:
+                    //stuff
+                    break;
+                case 2:
+                    //stuff
+                    break;
+                case 3:
+                    //stuff
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+
+            break;
         #endregion
         #region create/delete
         case 5:
