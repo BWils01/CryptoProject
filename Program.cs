@@ -223,7 +223,31 @@ while(options != 0)
         #endregion
         #region create/delete
         case 5:
-            //stuff
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("0. exit");
+            Console.WriteLine("1. Create a cryptosystem");
+            Console.WriteLine("2. Delete a cryptosystem");
+            Console.WriteLine("3. Delete a message");
+            choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case 0:
+                    //nothing
+                    break;
+                case 1:
+                    //stuff
+                case 2:
+                    //stuff
+                    break;
+                case 3:
+                    //stuff
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+
             break;
         #endregion
         #region default
