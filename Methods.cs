@@ -116,7 +116,7 @@ static class Methods
     }
     public static Boolean isPrime(this BigInteger value, int witnesses = 10)
     {
-        if (value <= 1)
+        if (value <= 1 || value == 4)
             return false;
 
         if (witnesses <= 0)
