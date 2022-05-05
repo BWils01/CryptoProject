@@ -41,5 +41,21 @@ class Memory
             Console.WriteLine($"message: {_messageMemory[i].message}");
         }
     }
+    public void CreateSystem(CryptoSystem system)
+    {
+        _systemMemory.Add(system);
+    }
+    public void CreateMessage(Message message)
+    {
+        _messageMemory.Add(message);
+    }
+    public void DeleteSystem(int location)
+    {
+        _systemMemory.RemoveAt(location);
+    }
+    public void DeleteMessage(int location)
+    {
+        _messageMemory.RemoveAt(location);
+    }
     #endregion
 }
