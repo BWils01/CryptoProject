@@ -26,6 +26,8 @@ class Memory
     #region methods
     public void PrintSystems()
     {
+        Console.WriteLine("Printing cryptosystems");
+        Console.WriteLine();
         for(int i = 0; i < _systemMemory.Count; i++)
         {
             Console.WriteLine($"Memory Location {i}");
@@ -34,6 +36,8 @@ class Memory
     }
     public void PrintMessages()
     {
+        Console.WriteLine("Printing messages");
+        Console.WriteLine();
         for(int i = 0; i < _messageMemory.Count; i++)
         {
             Console.WriteLine($"Memory Location {i}");
