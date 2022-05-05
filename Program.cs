@@ -243,6 +243,7 @@ while(options != 0)
 
                     switch (choice)
                     {
+                        #region El Gamal
                         case 1:
                             BigInteger prime = 4;
                             while(!Methods.isPrime(prime) && Methods.AsciiToString(prime).Count() < 4)
@@ -265,15 +266,46 @@ while(options != 0)
                             memory.CreateSystem(elgamal);
 
                             break;
+                        #endregion
+                        #region RSA
                         case 2:
-                            //stuff
+                            BigInteger p = 4;
+                            while(!Methods.isPrime(p))
+                            {
+                                Console.WriteLine("Input a prime");
+                                p = Convert.ToInt32(Console.ReadLine());
+                            }
+
+                            BigInteger q = 4;
+                            while(!Methods.isPrime(q))
+                            {
+                                Console.WriteLine("Input a second prime");
+                                q = Convert.ToInt32(Console.ReadLine());
+                            }
+                            BigInteger n = p * q;
+                            Console.WriteLine($"n = {n}");
+
+                            BigInteger e = 1;
+                            bool first = true;
+                            while(first || BigInteger.GreatestCommonDivisor(e, n) != 1)
+                            {
+                                Console.WriteLine("Input an integer such that gcd(e, phi(n)) = 1");
+                            }
+
+                            RSA rsa = new RSA(p, q, e);
+
                             break;
+                        #endregion
+                        #region Diffie-Hellman
                         case 3:
                             //stuff
                             break;
+                        #endregion
+                        #region default
                         default:
                             Console.WriteLine("Invalid input");
                             break;
+                        #endregion
                     }
 
                     choice = 1;
