@@ -29,10 +29,12 @@ class DiffieHellman : CryptoSystem
     {
         Console.WriteLine("Diffie-Hellman Encryption System Info");
         Console.WriteLine();
-        Console.WriteLine($"Shared Key: {_sharedKey}");
-        Console.WriteLine($"Prime: {_prime}");
+        Console.WriteLine("Public:");
         Console.WriteLine($"g^a: {BigInteger.ModPow(_generator, _senderSecret, _prime)}");
         Console.WriteLine($"g^b: {BigInteger.ModPow(_generator, _recieverSecret, _prime)}");
+        Console.WriteLine($"Prime: {_prime}");
+        Console.WriteLine("Private:");
+        Console.WriteLine($"Shared Key: {_sharedKey}");
     }
     public override BigInteger Encrypt(string message)
     {
