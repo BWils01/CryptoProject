@@ -17,4 +17,5 @@ abstract class CryptoSystem
     public abstract void PrintInfo();
     public abstract BigInteger Encrypt(string message);
     public abstract string Decrypt(BigInteger message);
+    public abstract string Intercept(BigInteger message);
 }

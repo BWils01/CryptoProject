@@ -39,5 +39,9 @@ class RSA : CryptoSystem
     {
         throw new NotImplementedException();
     }
+    public override string Intercept(BigInteger message)
+    {
+        throw new NotImplementedException();
+    }
     #endregion
 }
