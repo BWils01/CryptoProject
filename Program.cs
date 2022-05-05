@@ -262,7 +262,22 @@ while(options != 0)
                             Console.WriteLine("Input a private key (1 <= x <= p - 2)");
                             BigInteger privateKey = BigInteger.Parse(Console.ReadLine());
 
-                            ElGamal elgamal = new ElGamal(prime, generator, privateKey);
+                            Console.WriteLine("Is this an intercepted message? y/n");
+                            string ynM = Console.ReadLine();
+                            BigInteger gX;
+
+                            if (ynM == "n")
+                            {
+                                gX = BigInteger.ModPow(generator, privateKey, prime);
+                                Console.WriteLine($"g^x = {gX}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Input the g^x");
+                                gX = BigInteger.Parse(Console.ReadLine());
+                            }
+
+                            ElGamal elgamal = new ElGamal(prime, generator, privateKey, gX);
                             memory.CreateSystem(elgamal);
                             choice = 1;
 
