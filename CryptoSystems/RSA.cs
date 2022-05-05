@@ -38,7 +38,9 @@ class RSA : CryptoSystem
     }
     public override string Encrypt(string message)
     {
-        throw new NotImplementedException();
+        BigInteger messageI = Methods.StringToAscii(message);
+        string resultM = Methods.AsciiToString(BigInteger.ModPow(messageI, _exponent, _prime * _secondPrime));
+        return resultM;
     }
     public override string Decrypt(string message)
     {
