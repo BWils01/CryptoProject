@@ -19,9 +19,9 @@ class DiffieHellman : CryptoSystem
         _generator = generator;
         _recieverSecret = b;
         _senderSecret = a;
-        _sharedKey = b*a % prime;
         _gA = BigInteger.ModPow(generator, a, prime);
         _gB = BigInteger.ModPow(generator, b, prime);
+        _sharedKey = BigInteger.ModPow(_gA, b, prime);
         _system = "Diffie-Hellman";
     }
     public DiffieHellman(BigInteger prime, BigInteger generator, string gAgB)
@@ -67,7 +67,27 @@ class DiffieHellman : CryptoSystem
     }
     public override string Intercept(string message)
     {
-        throw new NotImplementedException();
+        //brute force g^A
+        for(int i = 1; i < _prime; i++)
+        {
+            if(BigInteger.ModPow(_generator, i, _prime) == _gA)
+            {
+                _senderSecret = i;
+                break;
+            }
+        }
+        for (int i = 1; i < _prime; i++)
+        {
+            if (BigInteger.ModPow(_generator, i, _prime) == _gB)
+            {
+                _recieverSecret = i;
+                break;
+            }
+        }
+        _sharedKey = BigInteger.ModPow(_gA, _recieverSecret, _prime);
+
+        string resultM = Decrypt(message);
+        return resultM;
     }
     #endregion
 }
