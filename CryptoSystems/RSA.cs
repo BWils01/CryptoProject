@@ -6,10 +6,17 @@ class RSA : CryptoSystem
 {
     #region fields
     BigInteger _secondPrime;
+    BigInteger _exponent;
 
     #endregion
     #region constructors
-
+    public RSA(BigInteger prime, BigInteger secondPrime, BigInteger exponent)
+    {
+        _prime = prime;
+        _secondPrime = secondPrime;
+        _exponent = exponent;
+        _system = "RSA";
+    }
     #endregion
     #region properties
 

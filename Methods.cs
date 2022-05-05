@@ -49,7 +49,8 @@ static class Methods
     }
     #region Miller Rabin test
     private static ThreadLocal<Random> s_Gen = new ThreadLocal<Random>(
-      () => {
+      () => 
+      {
           return new Random();
       }
     );
