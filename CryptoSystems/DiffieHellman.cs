@@ -38,11 +38,13 @@ class DiffieHellman : CryptoSystem
     }
     public override string Encrypt(string message)
     {
-        throw new NotImplementedException();
+        BigInteger messageI = Methods.StringToAscii(message);
+        string resultMS = Methods.AsciiToString(BigInteger.ModPow(messageI, _sharedKey, _prime));
+        return resultMS;
     }
     public override string Decrypt(string message)
     {
-        throw new NotImplementedException();
+
     }
     public override string Intercept(string message)
     {
