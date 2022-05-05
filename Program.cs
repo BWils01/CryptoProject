@@ -57,17 +57,22 @@ while(options != 0)
                 Console.ReadLine();
             }
 
+            //acquire data
             Console.WriteLine("Input memory location");
             int location = Convert.ToInt32(Console.ReadLine());
-
             Console.WriteLine("Please input message");
-            string input = Console.ReadLine();
-            
-            BigInteger numMessage = Methods.StringToAscii(input);
-            numMessage = 
+            string strMessage = Console.ReadLine();
 
-            Message message = new Message(20, memory.systemMemory[location].system);
+            //encrypt data
+            BigInteger numMessage = memory.systemMemory[location].Encrypt(strMessage);
+
+            //store in memory
+            Message message = new Message(numMessage, memory.systemMemory[location].system);
             memory.CreateMessage(message);
+
+            //print info to user
+            Console.WriteLine($"Your encrypted message is {numMessage}");
+            Console.WriteLine($"at location {location}");
             break;
         #endregion
         #region decryption
