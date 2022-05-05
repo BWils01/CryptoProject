@@ -25,8 +25,11 @@ class ElGamal : CryptoSystem
     {
         Console.WriteLine("El Gamal Encryption System Info");
         Console.WriteLine();
+        Console.WriteLine("Public:");
         Console.WriteLine($"Generator: {_generator}");
         Console.WriteLine($"Prime: {_prime}");
+        Console.WriteLine($"g^x (mod p): {BigInteger.ModPow(_generator, _privateKey, _prime)}");
+        Console.WriteLine("Private:");
         Console.WriteLine($"Private Key: {_privateKey}");
     }
     public override BigInteger Encrypt(string message)
