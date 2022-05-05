@@ -32,15 +32,17 @@ class ElGamal : CryptoSystem
         Console.WriteLine("Private:");
         Console.WriteLine($"Private Key: {_privateKey}");
     }
-    public override BigInteger Encrypt(string message)
+    public override string Encrypt(string message)
+    {
+        BigInteger result = Methods.StringToAscii(message);
+
+
+    }
+    public override string Decrypt(string message)
     {
         throw new NotImplementedException();
     }
-    public override string Decrypt(BigInteger message)
-    {
-        throw new NotImplementedException();
-    }
-    public override string Intercept(BigInteger message)
+    public override string Intercept(string message)
     {
         throw new NotImplementedException();
     }

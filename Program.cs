@@ -70,7 +70,7 @@ while(options != 0)
             string strMessage = Console.ReadLine();
 
             //encrypt data
-            BigInteger numMessage = memory.systemMemory[locationE].Encrypt(strMessage);
+            string numMessage = memory.systemMemory[locationE].Encrypt(strMessage);
 
             //store in memory
             Message message = new Message(numMessage, memory.systemMemory[locationE].system);
@@ -126,7 +126,7 @@ while(options != 0)
             else
             {
                 Console.WriteLine("Input the encrypted message");
-                BigInteger messageD = BigInteger.Parse(Console.ReadLine());
+                string messageD = Console.ReadLine();
 
                 string decrypted = memory.systemMemory[locationDS].Decrypt(messageD);
                 Console.WriteLine($"Decrypted message is {decrypted}");
@@ -162,11 +162,11 @@ while(options != 0)
 
             Console.WriteLine("Is the message in the memory? y/n");
             ynI = Console.ReadLine();
-            BigInteger intercept;
+            string intercept;
             
             if(ynI == "n")
             {
-                intercept = BigInteger.Parse(Console.ReadLine());
+                intercept = Console.ReadLine();
             }
             else
             {

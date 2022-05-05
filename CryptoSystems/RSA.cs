@@ -36,15 +36,15 @@ class RSA : CryptoSystem
         Console.WriteLine($"Prime2: {_secondPrime}");
         Console.WriteLine($"Exponent^-1: {Methods.ModInversion(_exponent, _phiN)}");
     }
-    public override BigInteger Encrypt(string message)
+    public override string Encrypt(string message)
     {
         throw new NotImplementedException();
     }
-    public override string Decrypt(BigInteger message)
+    public override string Decrypt(string message)
     {
         throw new NotImplementedException();
     }
-    public override string Intercept(BigInteger message)
+    public override string Intercept(string message)
     {
         throw new NotImplementedException();
     }

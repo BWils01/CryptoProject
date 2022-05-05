@@ -15,7 +15,7 @@ abstract class CryptoSystem
         get { return _system; }
     }
     public abstract void PrintInfo();
-    public abstract BigInteger Encrypt(string message);
-    public abstract string Decrypt(BigInteger message);
-    public abstract string Intercept(BigInteger message);
+    public abstract string Encrypt(string message);
+    public abstract string Decrypt(string message);
+    public abstract string Intercept(string message);
 }
