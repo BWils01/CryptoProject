@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CryptoProject.CryptoSystems;
-using CryptoProject;
+using CryptoProjectMethods;
+using CryptoProjectMemory;
 using System.Numerics;
 
 BigInteger big = 34253451345314;
@@ -101,7 +102,7 @@ while(options != 0)
                 //stuff
                 break;
         #endregion
-        #region create
+        #region create/delete
         case 5:
             //stuff
             break;

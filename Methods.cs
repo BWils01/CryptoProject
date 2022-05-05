@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-namespace CryptoProject;
+namespace CryptoProjectMethods;
 
 static class Methods
 {
@@ -19,7 +19,7 @@ static class Methods
     {
         string result = "";
 
-        while (message != 1)
+        while (message != 1 && message > 0)
         {
             result = (char)(message % 1000) + result;
             message = message / 1000;

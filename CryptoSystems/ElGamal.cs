@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using CryptoProjectMethods;
 namespace CryptoProject.CryptoSystems;
 
 class ElGamal : CryptoSystem

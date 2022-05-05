@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using CryptoProject;
+using CryptoProjectMethods;
 namespace CryptoProject.CryptoSystems;
 
 class RSA : CryptoSystem
