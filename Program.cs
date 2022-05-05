@@ -190,6 +190,7 @@ while(options != 0)
             Console.WriteLine("1. Stored cryptosystems");
             Console.WriteLine("2. Stored encrypted messages");
             Console.WriteLine("3. Both");
+            choice = Convert.ToInt32((Console.ReadLine()));
 
             switch (choice)
             {
