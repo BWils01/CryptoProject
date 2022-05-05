@@ -5,12 +5,16 @@ namespace CryptoProject.CryptoSystems;
 class DiffieHellman : CryptoSystem
 {
     #region fields
-    BigInteger _recieverSecret;
-    BigInteger _senderSecret;
+    BigInteger _recieverSecret; //the b exponent
+    BigInteger _senderSecret; //the a exponent
     BigInteger _generator;
     BigInteger _sharedKey;
     #endregion
     #region constructors
+    public DiffieHellman()
+    {
+
+    }
     #endregion
     #region properties
 
@@ -18,7 +22,12 @@ class DiffieHellman : CryptoSystem
     #region methods
     public override void PrintInfo()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Diffie-Hellman Encryption System Info");
+        Console.WriteLine();
+        Console.WriteLine($"Shared Key: {_sharedKey}");
+        Console.WriteLine($"Prime: {_prime}");
+        Console.WriteLine($"g^a: {BigInteger.ModPow(_generator, _senderSecret, _prime)}");
+        Console.WriteLine($"g^b: {BigInteger.ModPow(_generator, _recieverSecret, _prime)}");
     }
     public override BigInteger Encrypt(string message)
     {
