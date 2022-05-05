@@ -293,6 +293,7 @@ while(options != 0)
                             }
 
                             RSA rsa = new RSA(p, q, e);
+                            memory.CreateSystem(rsa);
 
                             break;
                         #endregion
