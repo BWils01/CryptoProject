@@ -64,7 +64,7 @@ while(options != 0)
             }
 
             //acquire data
-            Console.WriteLine("Input memory location");
+            Console.WriteLine("Input memory location of the system");
             int locationE = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please input message");
             string strMessage = Console.ReadLine();
@@ -99,7 +99,7 @@ while(options != 0)
                 Console.WriteLine("Press Enter to continue");
                 Console.ReadLine();
             }
-            Console.WriteLine("Input the memory location");
+            Console.WriteLine("Input the memory location of the system");
             int locationDS = Convert.ToInt32((Console.ReadLine()));
 
             Console.WriteLine("Is the message stored? y/n");
@@ -117,7 +117,7 @@ while(options != 0)
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                 }
-                Console.WriteLine("Input the memory location");
+                Console.WriteLine("Input the memory location of the message");
                 int locationDM = Convert.ToInt32((Console.ReadLine()));
 
                 string decrypted = memory.systemMemory[locationDS].Decrypt(memory.messageMemory[locationDM].message);
@@ -181,7 +181,7 @@ while(options != 0)
                     Console.ReadLine();
                 }
 
-                Console.WriteLine("What is the location of the message");
+                Console.WriteLine("What is the memory location of the message");
                 int locationIM = Convert.ToInt32((Console.ReadLine()));
                 intercept = memory.messageMemory[locationIM].message;
             }
