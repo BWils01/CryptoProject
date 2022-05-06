@@ -9,6 +9,9 @@ class ElGamal : CryptoSystem
     BigInteger _privateKey;
     BigInteger _gX;
     #endregion
+    #region properties
+
+    #endregion
     #region constructors
     public ElGamal(BigInteger prime, BigInteger generator, BigInteger privateKey, BigInteger gX)
     {
@@ -18,9 +21,6 @@ class ElGamal : CryptoSystem
         _gX = gX;
         _system = "El Gamal";
     }
-    #endregion
-    #region properties
-
     #endregion
     #region methods
     public override void PrintInfo()
