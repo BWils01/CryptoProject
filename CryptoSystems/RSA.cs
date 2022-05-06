@@ -11,6 +11,9 @@ class RSA : CryptoSystem
     BigInteger _N;
 
     #endregion
+    #region properties
+
+    #endregion
     #region constructors
     public RSA(BigInteger prime, BigInteger secondPrime, BigInteger exponent)
     {
@@ -30,9 +33,6 @@ class RSA : CryptoSystem
         _N = N;
         _system = "RSA";
     }
-    #endregion
-    #region properties
-
     #endregion
     #region methods
     public override void PrintInfo()
