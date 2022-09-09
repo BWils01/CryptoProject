@@ -27,6 +27,7 @@ while(options != 0)
     Console.WriteLine("3. Intercept");
     Console.WriteLine("4. View Memory");
     Console.WriteLine("5. Create/Delete");
+    Console.WriteLine("6. Debug Code");
     options = Convert.ToInt32(Console.ReadLine());
     int choice = 0;
     switch (options)
@@ -435,6 +436,14 @@ while(options != 0)
                     break;
             }
 
+            break;
+        #endregion
+        #region Debug Code
+        case 6:
+            Console.WriteLine("Input Message");
+            string MessageTest = Console.ReadLine();
+            BigInteger Message = Methods.StringToAscii(MessageTest);
+            Console.WriteLine(Message);
             break;
         #endregion
         #region default
